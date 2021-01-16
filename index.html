@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="1002663170763-7b0j0gbk28u0vkt4fcnaim7gepuetue1.apps.googleusercontent.com">
+  <title>Agora Web Demo</title>
+</head>
+<body>
+    <div class="h-screen bg-indigo-200 flex justify-center items-center">
+        <div class="w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg">
+          <div class="block m-auto">Agora.io</div>
+          <label class="text-gray-700 font-bold py-2" for="">Username</label>
+          <input id="username" class="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3" type="text" placeholder="Username" required>
+          <label class="text-gray-700 font-bold py-2" for="">Password</label>
+          <input class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline" type="password" placeholder="********" required>
+          <div class="flex items-center my-4 block m-auto ">
+            <button id="submit_btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-10" onclick="window.location.href='./pages/avc.html'">
+              Sign In
+            </button>
+          </div>
+
+          <hr class="my-6 border-gray-300 w-full">
+
+          <div style="display: block; margin-right: auto; margin-left: auto;">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          </div>
+          <script>
+            function onSignIn(googleUser) {
+              var profile = googleUser.getBasicProfile();
+              console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+              console.log('Name: ' + profile.getName());
+              console.log('Image URL: ' + profile.getImageUrl());
+              console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+              updateName(profile.getName());
+              window.location.href = './pages/avc.html'
+            }
+            function updateName(name){
+              document.getElementById("username").value = name;
+            }
+          </script>
+        </div>
+        </div>
+      </div>
+      
+</body>
+</html>

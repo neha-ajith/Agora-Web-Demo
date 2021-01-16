@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Agora Video Call Demo</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css'>
+</head>
+<body>
+    <div class="h-screen bg-indigo-200 flex justify-center items-center">
+        <div class="w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg">
+        <div class="block m-auto">Agora.io</div>
+          <label class="text-gray-700 font-bold py-2" for="">Channel Name</label>
+          <input id="channel_name" class="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3" type="text" placeholder="test" required>
+          <label class="text-gray-700 font-bold py-2" for="">Channel Password</label>
+          <input class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline" type="password" placeholder="********">
+          <div class="flex items-center my-4 block m-auto ">
+            <button id="avc_submit_btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-10" onclick="onSubmit()">
+              Join Call
+            </button>
+            <script>
+              function onSubmit() {
+                console.log("Hello World");
+                submitChannelName();
+              }
+              function submitChannelName() {
+                var channelName = document.getElementById("channel_name").value;
+                console.log(channelName);
+                localStorage.setItem("channelname", channelName);
+                window.location.href='./callpage.html'
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
